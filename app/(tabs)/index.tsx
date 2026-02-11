@@ -1,24 +1,17 @@
-import { router } from 'expo-router';
-import { FlatList, Pressable, StyleSheet, Text, View } from 'react-native';
-
-import { EventCard } from '@/components/EventCard';
-import { EVENTS } from '@/constants/events';
+import { StyleSheet, Text, View } from 'react-native';
 
 export default function HomeScreen() {
   return (
     <View style={styles.container}>
-      <View style={styles.headerRow}>
-        <Text style={styles.title}>Eventos La Paz 🚀</Text>
-        <Pressable onPress={() => router.push('/favorites')} style={styles.favoritesLink}>
-          <Text style={styles.favoritesLinkText}>Ver favoritos</Text>
-        </Pressable>
+      
+      <Text style={styles.title}>Eventos La Paz 🚀</Text>
+
+      <View style={styles.card}>
+        <Text style={styles.eventTitle}>Festival de Música</Text>
+        <Text>📍 Teatro al Aire Libre</Text>
+        <Text>📅 25 Febrero 2026</Text>
       </View>
 
-      <FlatList
-        data={EVENTS}
-        keyExtractor={(item) => item.id}
-        renderItem={({ item }) => <EventCard event={item} />}
-      />
     </View>
   );
 }
@@ -26,27 +19,22 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: 60,
     padding: 20,
-  },
-  headerRow: {
-    alignItems: 'flex-start',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginBottom: 20,
+    marginTop: 60,
   },
   title: {
     fontSize: 24,
     fontWeight: 'bold',
+    marginBottom: 20,
   },
-  favoritesLink: {
-    backgroundColor: '#1d4ed8',
-    borderRadius: 8,
-    paddingHorizontal: 10,
-    paddingVertical: 8,
+  card: {
+    backgroundColor: '#f2f2f2',
+    padding: 15,
+    borderRadius: 10,
   },
-  favoritesLinkText: {
-    color: '#ffffff',
-    fontWeight: '600',
+  eventTitle: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginBottom: 5,
   },
 });
